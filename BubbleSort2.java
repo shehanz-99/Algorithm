@@ -5,44 +5,39 @@
 package bubblesort;
 import java.util.Scanner;
 
+
+
 public class BubbleSort2 {
 
-   public static void main(String[] args) {
+    public static void bubbleSort(int[] array) {
+        int n = array.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - 1 - i; j++) {
+                if (array[j] < array[j + 1]) {
+                    array[j] = array[j] + array[j + 1];
+                    array[j + 1] = array[j] - array[j + 1];
+                    array[j] = array[j] - array[j + 1];
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        int[] numbers = new int[8];
 
-        // Get the number of elements from the user
-        System.out.print("Enter the number of elements: ");
-        int n = scanner.nextInt();
-
-        int[] numbers = new int[n];
-
-        // Get user input
-        System.out.println("Enter the elements of the array:");
-        for (int i = 0; i < n; i++) {
+        System.out.println("Enter 8 numbers:");
+        for (int i = 0; i < 8; i++) {
             numbers[i] = scanner.nextInt();
         }
 
-        bubbleSortDescending(numbers);
+        bubbleSort(numbers);
 
-        System.out.println("\nSorted array in descending order:");
+        System.out.println("Sorted numbers in descending order:");
         for (int num : numbers) {
             System.out.print(num + " ");
         }
 
         scanner.close();
-    }
-
-    public static void bubbleSortDescending(int[] arr) {
-        int n = arr.length;
-        for (int i = 0; i < n - 1; i++) {
-            for (int j = 0; j < n - i - 1; j++) {
-                if (arr[j] < arr[j + 1]) {
-                    // Swap 
-                    arr[j] = arr[j] + arr[j + 1];
-                    arr[j + 1] = arr[j] - arr[j];
-                    arr[j] = arr[j] - arr[j + 1];
-                }
-            }
-        }
     }
 }
